@@ -1,3 +1,18 @@
 [tools]
 deno = "latest"
 uv = "latest"
+
+[tasks."install:mise"]
+run = 'mise install'
+
+[tasks."install:uv"]
+run = 'uv sync'
+
+[tasks."install:deno"]
+run = 'deno jupyter --install'
+
+[tasks.install]
+depends = ['install:*']
+
+[tasks.up]
+run = 'uv run jupyter lab --NotebookApp.token=""'
